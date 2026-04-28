@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <h2 style="text-align: center; margin-bottom: 2rem; color: #461d7c;">Login to LSU Banking</h2>
+    <form method="POST">
+        <!-- FIX #6: CSRF token prevents cross-site request forgery -->
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="form-group">
+            <label>Username:</label>
+            <input type="text" name="username" required>
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="password" name="password" required>
+        </div>
+        <div style="text-align: center;">
+            <button type="submit" class="btn btn-primary btn-large">Login</button>
+        </div>
+    </form>
+    <p style="text-align: center; margin-top: 1rem;">Don't have an account? <a href="/register">Register here</a></p>
+</div>
+{% endblock %}

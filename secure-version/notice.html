@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{# FIX #5: This template replaces show_message_page() which used Python
+   f-strings to build HTML. Any user input (account numbers, owner names)
+   was interpolated raw → reflected XSS. Jinja2 auto-escapes all {{ }}
+   variables, so <script> tags become inert &lt;script&gt; text. #}
+
+{% block content %}
+<div style="max-width: 500px; margin: 0 auto; background: #f8f9fa; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
+    <div style="font-size: 4rem; margin-bottom: 1rem;">ℹ️</div>
+    <div style="font-size: 1.5rem; color: #461d7c; margin-bottom: 1rem;">Notice</div>
+    <div style="color: #666; margin-bottom: 2rem; font-size: 1.1rem;">{{ message }}</div>
+    <a href="{{ redirect_url }}" class="btn btn-primary">{{ redirect_text }}</a>
+</div>
+{% endblock %}

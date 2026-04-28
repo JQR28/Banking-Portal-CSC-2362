@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <h1>Welcome to LSU Banking</h1>
+    <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem;">Your Trusted Financial Partner</p>
+    
+    <div class="features">
+        <div class="feature">
+            <h3>💰 Secure Banking</h3>
+            <p>24/7 access to your accounts</p>
+        </div>
+        <div class="feature">
+            <h3>💸 Instant Transfers</h3>
+            <p>Send money to any account</p>
+        </div>
+        <div class="feature">
+            <h3>📊 Transaction History</h3>
+            <p>Track all your activities</p>
+        </div>
+    </div>
+    
+    {% if not session.logged_in %}
+        <div class="quick-actions">
+            <a href="/login" class="btn btn-primary btn-large">Login</a>
+            <a href="/register" class="btn btn-secondary btn-large">Open Account</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

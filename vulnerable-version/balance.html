@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Your Accounts</h2>
+    <p>Welcome, {{ username }}</p>
+    
+    <hr>
+    
+    {% if accounts %}
+        <ul class="list-group">
+        {% for acc in accounts %}
+            <li class="list-group-item">
+                <strong>{{ acc.account_type }} Account</strong><br>
+                Number: {{ acc.account_number }}<br>
+                Balance: <span class="text-success">${{ "{:,.2f}".format(acc.balance) }}</span>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>You don't have any accounts yet.</p>
+    {% endif %}
+    
+    <br>
+    <a href="{{ url_for('index') }}" class="btn btn-primary">Back to Dashboard</a>
+</div>
+{% endblock %}
